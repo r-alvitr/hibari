@@ -2,6 +2,11 @@ plugins {
     id 'java'
 }
 
+apply plugin: 'application'
+apply plugin: 'java'
+
+mainClassName = 'org.sysken.Main'
+
 group 'ecm'
 version '1.0-SNAPSHOT'
 
@@ -14,15 +19,7 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-group 'org.sysken'
-version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+run {
+    standardInput = System.in
 }
