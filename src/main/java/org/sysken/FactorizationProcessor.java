@@ -14,8 +14,7 @@ public class FactorizationProcessor {
      * @return p Nの非自明な約数
      */
     public BigInteger factor(BigInteger N){
-        byte magnitude[] = {0};
-        BigInteger p = new BigInteger(1, magnitude);
+        BigInteger p = new BigInteger("0");
         return p;
     }
 }
