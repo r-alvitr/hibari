@@ -32,6 +32,22 @@ public class Util {
     }
 
     /**
+     * generateSmooth メソッド
+     * 与えられた自然数kに対し，k-Smoothな自然数を返す．
+     * @param k Smoothさの上限．
+     * @return N k-Smoothな自然数．
+     */
+    public static BigInteger generateSmooth(int k){
+        LinkedList<Integer> primes = Util.sieve(k);
+        BigInteger N = new BigInteger("1");
+        for(int prime : primes){
+            int power = (int) Math.floor(Math.log(k) / Math.log(prime));
+            N = N.multiply(BigInteger.valueOf((int) Math.pow(prime, power)));
+        }
+        return N;
+    }
+
+    /**
      * sieve メソッド
      * 与えられた自然数kに対し，k以下の素数を要素として持つリストをEratosthenesふるい法により計算し，返す．
      * @param k 素数をリストアップする上限．
