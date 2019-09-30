@@ -11,7 +11,7 @@
 * [x] :wrench: LCM, k-LCM の計算
 * [x] :wrench: PowerSmooth な自然数の生成
 * [x] :wrench: Eratosthenes ふるい法
-* [ ] :wrench: Miller-Rabin 素数判定法
+* [x] :wrench: Miller-Rabin 素数判定法
 * [ ] :sparkles: 楕円曲線の生成
 * [ ] :sparkles: 楕円曲線上の k 倍演算
 * [ ] :sparkles: 全体処理の統括
