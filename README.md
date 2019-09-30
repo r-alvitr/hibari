@@ -5,7 +5,7 @@
 * Java Development Kit 8
 
 ## タスク
-メソッドとして実装すべき処理（増えるかも）：
+メソッドとして実装すべき処理(増えるかも):
 * [ ] :wrench: モジュラ逆元の計算
 * [ ] :wrench: 拡張 Euclid 互除法
 * [ ] :wrench: LCM, k-LCM の計算
@@ -16,3 +16,16 @@
 * [ ] :sparkles: 楕円曲線上の k 倍演算
 * [ ] :sparkles: 全体処理の統括
 * [ ] :sparkles: 計算結果の検証
+
+## Git 運用方針
+### ブランチ
+* master: リリース
+* develop: 開発
+* test: テスト
+
+### コミットメッセージ
+* :tada: イニシャルコミット
+* :sparkles: 新機能の実装
+* :books: ドキュメント
+* :hammer_and_wrench: 修正
+* :wastebasket: 削除
