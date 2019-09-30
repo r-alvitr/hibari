@@ -1,6 +1,7 @@
 package org.sysken;
 
 import java.math.*;
+import java.util.*;
 
 public class Util {
     /**
@@ -28,5 +29,34 @@ public class Util {
             N = lcm(N, BigInteger.valueOf(i));
         }
         return N;
+    }
+
+    /**
+     * sieve メソッド
+     * 与えられた自然数kに対し，k以下の素数を要素として持つリストをEratosthenesふるい法により計算し，返す．
+     * @param k 素数をリストアップする上限．
+     * @return primes 1以上k以下の素数をすべて要素に持つリスト．
+     */
+    public static LinkedList<Integer> sieve(int k){
+        if(k < 2){
+            return new LinkedList<Integer>();
+        }
+
+        LinkedList<Integer> primes = new LinkedList<Integer>();
+        LinkedList<Integer> numbers = new LinkedList<Integer>();
+
+        // TODO: 最適化する．
+        for(int i = 2;i <= k;++i){
+            numbers.add(i);
+        }
+
+        while(numbers.size() > 0){
+            int nextPrime = numbers.remove();
+            for(int i = nextPrime * nextPrime;i <= k;i += nextPrime){
+                numbers.removeFirstOccurrence(i);
+            }
+            primes.add(nextPrime);
+        }
+        return primes;
     }
 }
