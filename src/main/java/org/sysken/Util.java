@@ -10,7 +10,7 @@ public class Util {
      * @param B 他方の自然数．
      * @return N AとBの最小公倍数．
      */
-    public static BigInteger LCM(BigInteger A, BigInteger B){
+    public static BigInteger lcm(BigInteger A, BigInteger B){
         // LCM(A, B) = (A*B)/(GCD(A, B)) の関係が成りたつ．
         BigInteger N = A.multiply(B).divide(A.gcd(B));
         return N;
@@ -25,7 +25,7 @@ public class Util {
     public static BigInteger kLCM(int k){
         BigInteger N = new BigInteger("1");
         for(int i = 1;i <= k;++i){
-            N = LCM(N, BigInteger.valueOf(i));
+            N = lcm(N, BigInteger.valueOf(i));
         }
         return N;
     }
