@@ -6,7 +6,7 @@
 
 ## タスク
 メソッドとして実装すべき処理(増えるかも):
-* [ ] :wrench: モジュラ逆元の計算
+* [x] :wrench: モジュラ逆元の計算
 * [ ] :wrench: 拡張 Euclid 互除法
 * [ ] :wrench: LCM, k-LCM の計算
 * [ ] :wrench: PowerSmooth な自然数の生成
