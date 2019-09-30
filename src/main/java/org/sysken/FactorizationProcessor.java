@@ -1,5 +1,7 @@
 package org.sysken;
 
+import java.math.*;
+
 public class FactorizationProcessor {
     public FactorizationProcessor(){
 
@@ -11,8 +13,9 @@ public class FactorizationProcessor {
      * @param N 分解したい合成数
      * @return p Nの非自明な約数
      */
-    public int factor(int N){
-        int p = 0;
+    public BigInteger factor(BigInteger N){
+        byte magnitude[] = {0};
+        BigInteger p = new BigInteger(1, magnitude);
         return p;
     }
 }
