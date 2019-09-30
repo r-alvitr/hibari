@@ -5,7 +5,7 @@ import java.math.*;
 public class Util {
     /**
      * LCM メソッド
-     * 与えられた二つの自然数の最小公倍数．
+     * 与えられた二つの自然数の最小公倍数を返す．
      * @param A 一方の自然数．
      * @param B 他方の自然数．
      * @return N AとBの最小公倍数．
