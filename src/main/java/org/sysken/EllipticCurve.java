@@ -12,6 +12,9 @@ public class EllipticCurve {
         this.N = N;
         this.b = b;
         this.start = p;
-        this.c = this.start.y.pow(2).subtract(start.x.pow(3).add(this.start.x.multiply(this.b))).mod(this.N); // cの値を逆算的に決める．
+        this.c = p.y.pow(2).subtract(p.x.pow(3).add(p.x.multiply(b))).mod(N); // cの値を逆算的に決める．
+
+        //判別式を計算する．
+        BigInteger discriminant = b.pow(3).multiply(BigInteger.valueOf(4)).add( c.pow(2).multiply(BigInteger.valueOf(27))).gcd(N); // det = GCD(N, (4 b^2 + 27 c^3))
     }
 }
