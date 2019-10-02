@@ -5,11 +5,13 @@ import java.math.*;
 /* 位数Nの剰余類環上で定義された楕円曲線 y^2 = x^3 + bx + c */
 public class EllipticCurve {
     private BigInteger N;
-    private int b, c;
+    private BigInteger b, c;
+    private Point start;
 
-    public EllipticCurve(BigInteger N, int b, int c){
+    public EllipticCurve(BigInteger N, BigInteger b, Point p){
         this.N = N;
         this.b = b;
-        this.c = c;
+        this.start = p;
+        this.c = this.start.y.pow(2).subtract(start.x.pow(3).add(this.start.x.multiply(this.b))).mod(this.N); // cの値を逆算的に決める．
     }
 }
