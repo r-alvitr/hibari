@@ -6,7 +6,7 @@ import java.math.*;
 public class EllipticCurve {
     private BigInteger N;
     private BigInteger b, c;
-    private Point start;
+    public Point start;
     public BigInteger discriminant;
 
     public EllipticCurve(BigInteger N, BigInteger b, Point p){
