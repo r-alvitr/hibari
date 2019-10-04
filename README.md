@@ -12,9 +12,9 @@
 * [x] :wrench: PowerSmooth な自然数の生成
 * [x] :wrench: Eratosthenes ふるい法
 * [x] :wrench: Miller-Rabin 素数判定法
-* [ ] :sparkles: 楕円曲線の生成
-* [ ] :sparkles: 楕円曲線上の k 倍演算
-* [ ] :sparkles: 全体処理の統括
+* [x] :sparkles: 楕円曲線の生成
+* [x] :sparkles: 楕円曲線上の k 倍演算
+* [x] :sparkles: 全体処理の統括
 * [ ] :sparkles: 計算結果の検証
 
 ## Git 運用方針
