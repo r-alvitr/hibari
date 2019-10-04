@@ -4,8 +4,8 @@ import java.math.*;
 
 public class Main {
     public static void main(String[] args){
-        BigInteger N = new BigInteger("100");
+        BigInteger N = new BigInteger("1715761513");
         FactorizationProcessor processor = new FactorizationProcessor();
-        processor.factor(N);
+        System.out.println(processor.factor(N));
     }
 }
