@@ -77,8 +77,9 @@ public class FactorizationProcessor {
             }
 
             // Don't think, feel.
-            BigInteger newX = ( x.pow(4).mod(N).subtract( b.multiply(BigInteger.valueOf(2)).multiply(x.pow(2)).mod(N) ).subtract( c.multiply(BigInteger.valueOf(8)).multiply(x).mod(N) ).add( b.pow(2) ).mod(N) ).multiply( y.pow(2).multiply(BigInteger.valueOf(4)).modInverse(N) ).mod(N);
-            BigInteger newY = ( x.pow(6).mod(N).add( b.multiply(BigInteger.valueOf(5)).multiply(x.pow(4)).mod(N) ).add( c.multiply(BigInteger.valueOf(20)).multiply(x.pow(3)).mod(N) ).subtract( b.pow(2).multiply(BigInteger.valueOf(5)).multiply(x.pow(2)).mod(N) ).subtract( b.multiply(c).multiply(BigInteger.valueOf(4)).multiply(x).mod(N) ).subtract( c.pow(2).multiply(BigInteger.valueOf(8)).add(b.pow(3)).mod(N)) ).multiply( y.pow(3).multiply(BigInteger.valueOf(8)).modInverse(N) ).mod(N);
+            BigInteger newX = ( x.pow(4).subtract( b.multiply(BigInteger.valueOf(2)).multiply(x.pow(2)) ).subtract( c.multiply(BigInteger.valueOf(8)).multiply(x) ).add( b.pow(2) ) ).multiply( y.pow(2).multiply(BigInteger.valueOf(4)).modInverse(N) ).mod(N);
+            BigInteger newY = ( x.pow(6).add( b.multiply(BigInteger.valueOf(5)).multiply(x.pow(4)) ).add( c.multiply(BigInteger.valueOf(20)).multiply(x.pow(3)) ).subtract( b.pow(2).multiply(BigInteger.valueOf(5)).multiply(x.pow(2)) ).subtract( b.multiply(c).multiply(BigInteger.valueOf(4)).multiply(x) ).subtract( c.pow(2).multiply(BigInteger.valueOf(8)).add(b.pow(3))) ).multiply( y.pow(3).multiply(BigInteger.valueOf(8)).modInverse(N) ).mod(N);
+
             currentPoint = new Point(newX, newY);
         }
 
