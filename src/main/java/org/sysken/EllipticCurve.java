@@ -5,7 +5,7 @@ import java.math.*;
 /* 位数Nの剰余類環上で定義された楕円曲線 y^2 = x^3 + bx + c */
 public class EllipticCurve {
     private BigInteger N;
-    private BigInteger b, c;
+    public BigInteger b, c;
     public Point start;
     public BigInteger discriminant;
 
