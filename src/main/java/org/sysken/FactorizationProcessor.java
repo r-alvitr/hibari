@@ -19,9 +19,7 @@ public class FactorizationProcessor {
      */
     public BigInteger factor(BigInteger N){
         Random random = new Random();
-        int i = 100;
-        // このループ条件は暫定的なもの．あとで無限ループにして脱出条件を明記する．
-        while(--i >= 0){
+        while(true){
             BigInteger b = new BigInteger(RANDOM_LIMIT_BITS, random);
             Point p = new Point(new BigInteger(RANDOM_LIMIT_BITS, random), new BigInteger(RANDOM_LIMIT_BITS, random));
             BigInteger k = Util.generateSmooth(Util.kLCM(LCM_MAX).intValue());
@@ -37,8 +35,6 @@ public class FactorizationProcessor {
                 return ret;
             }
         }
-
-        return BigInteger.ZERO;
     }
 
     /**
