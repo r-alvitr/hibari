@@ -5,6 +5,7 @@ import java.util.*;
 
 public class FactorizationProcessor {
     final int RANDOM_LIMIT_BITS = 32;
+    final int RANDOM_SEED = 1470487;
     final int LCM_MAX = 10;
 
     public FactorizationProcessor(){
@@ -18,7 +19,7 @@ public class FactorizationProcessor {
      * @return p Nの非自明な約数
      */
     public BigInteger factor(BigInteger N){
-        Random random = new Random();
+        Random random = new Random(RANDOM_SEED);
         while(true){
             BigInteger b = new BigInteger(RANDOM_LIMIT_BITS, random);
             Point p = new Point(new BigInteger(RANDOM_LIMIT_BITS, random), new BigInteger(RANDOM_LIMIT_BITS, random));
