@@ -7,6 +7,7 @@ public class FactorizationProcessor {
     final int RANDOM_LIMIT_BITS = 32;
     final int RANDOM_SEED = 1470487;
     final int LCM_MAX = 10;
+    public long processTime = -1;
 
     public FactorizationProcessor(){
 
@@ -21,6 +22,7 @@ public class FactorizationProcessor {
     public BigInteger factor(BigInteger N){
         Random random = new Random(RANDOM_SEED);
         while(true){
+            long startTime = System.currentTimeMillis();
             BigInteger b = new BigInteger(RANDOM_LIMIT_BITS, random);
             Point p = new Point(new BigInteger(RANDOM_LIMIT_BITS, random), new BigInteger(RANDOM_LIMIT_BITS, random));
             BigInteger k = Util.generateSmooth(Util.kLCM(LCM_MAX).intValue());
@@ -32,7 +34,9 @@ public class FactorizationProcessor {
             }
 
             BigInteger ret = this.calculateMultiplication(N, curve, k);
-            if(!ret.equals(BigInteger.ZERO)){
+            long endTime = System.currentTimeMillis();
+            this.processTime = endTime - startTime;
+            if(!ret.equals(BigInteger.ZERO)) {
                 return ret;
             }
         }
