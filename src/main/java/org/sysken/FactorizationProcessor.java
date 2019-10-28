@@ -5,7 +5,9 @@ import java.util.*;
 
 public class FactorizationProcessor {
     final int RANDOM_LIMIT_BITS = 32;
+    final int RANDOM_SEED = 1470487;
     final int LCM_MAX = 10;
+    public long processTime = -1;
 
     public FactorizationProcessor(){
 
@@ -18,10 +20,11 @@ public class FactorizationProcessor {
      * @return p Nの非自明な約数
      */
     public BigInteger factor(BigInteger N){
-        Random random = new Random();
-        int i = 100;
-        // このループ条件は暫定的なもの．あとで無限ループにして脱出条件を明記する．
-        while(--i >= 0){
+        Random random = new Random(RANDOM_SEED);
+        while(true){
+            long startTime = System.currentTimeMillis();
+
+            // 楕円曲線のパラメータb，開始点p，倍数kを計算し，楕円曲線を生成する．
             BigInteger b = new BigInteger(RANDOM_LIMIT_BITS, random);
             Point p = new Point(new BigInteger(RANDOM_LIMIT_BITS, random), new BigInteger(RANDOM_LIMIT_BITS, random));
             BigInteger k = Util.generateSmooth(Util.kLCM(LCM_MAX).intValue());
@@ -32,13 +35,18 @@ public class FactorizationProcessor {
                 return curve.discriminant;
             }
 
+            // k倍演算を行う．
             BigInteger ret = this.calculateMultiplication(N, curve, k);
-            if(!ret.equals(BigInteger.ZERO)){
+
+            // 楕円曲線1つ処理するのにかかった時間を計算する．
+            long endTime = System.currentTimeMillis();
+            this.processTime = endTime - startTime;
+
+            // 非自明な約数が見つかっていればそれを返す．
+            if(!ret.equals(BigInteger.ZERO)) {
                 return ret;
             }
         }
-
-        return BigInteger.ZERO;
     }
 
     /**
@@ -102,6 +110,7 @@ public class FactorizationProcessor {
             // 点の加法に用いる．
             BigInteger lambda = dy.multiply( dx.modInverse(N) ).mod(N);
 
+            // 点の加法を計算し，ループする．
             BigInteger X = lambda.pow(2).subtract(currentPoint.x).subtract(newPoint.x).mod(N);
             BigInteger Y = lambda.multiply(X).multiply(BigInteger.valueOf(-1)).subtract(currentPoint.y).add(lambda.multiply(currentPoint.x));
             currentPoint = new Point(X, Y);
