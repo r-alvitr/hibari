@@ -23,6 +23,8 @@ public class FactorizationProcessor {
         Random random = new Random(RANDOM_SEED);
         while(true){
             long startTime = System.currentTimeMillis();
+
+            // 楕円曲線のパラメータb，開始点p，倍数kを計算し，楕円曲線を生成する．
             BigInteger b = new BigInteger(RANDOM_LIMIT_BITS, random);
             Point p = new Point(new BigInteger(RANDOM_LIMIT_BITS, random), new BigInteger(RANDOM_LIMIT_BITS, random));
             BigInteger k = Util.generateSmooth(Util.kLCM(LCM_MAX).intValue());
@@ -33,9 +35,14 @@ public class FactorizationProcessor {
                 return curve.discriminant;
             }
 
+            // k倍演算を行う．
             BigInteger ret = this.calculateMultiplication(N, curve, k);
+
+            // 楕円曲線1つ処理するのにかかった時間を計算する．
             long endTime = System.currentTimeMillis();
             this.processTime = endTime - startTime;
+
+            // 非自明な約数が見つかっていればそれを返す．
             if(!ret.equals(BigInteger.ZERO)) {
                 return ret;
             }
@@ -103,6 +110,7 @@ public class FactorizationProcessor {
             // 点の加法に用いる．
             BigInteger lambda = dy.multiply( dx.modInverse(N) ).mod(N);
 
+            // 点の加法を計算し，ループする．
             BigInteger X = lambda.pow(2).subtract(currentPoint.x).subtract(newPoint.x).mod(N);
             BigInteger Y = lambda.multiply(X).multiply(BigInteger.valueOf(-1)).subtract(currentPoint.y).add(lambda.multiply(currentPoint.x));
             currentPoint = new Point(X, Y);
